@@ -29,7 +29,7 @@ def write_records(records: List[Dict[str, str]]):
         for r in records:
             writer.writerow([r[field] for field in FIELDNAMES])
 
-# ---------- VALIDATION ----------
+# VALIDATION 
 def validate_student(id, name, age, grade, section, existing_ids):
     if not id.isdigit():
         return False, "❌ Student ID must be numeric."
@@ -80,7 +80,7 @@ def delete_student(id):
     write_records(new_records)
     return True, " Student deleted."
 
-# ---------- UI ----------
+# UI 
 st.set_page_config(page_title="SMS by Sajida Khoso", layout="wide")
 
 # Branding Header
@@ -188,7 +188,7 @@ elif choice == "About":
     """)
     st.success("Thank you for using the Student Management System!")
 
-# ---------- FOOTER ----------
+# FOOTER 
 st.markdown("""
 <br>
 <hr>
@@ -198,4 +198,5 @@ st.markdown("""
 <a href='https://github.com/sajidakhoso' target='_blank'>🔗 GitHub Profile</a>
 </center>
 """, unsafe_allow_html=True)
+
 

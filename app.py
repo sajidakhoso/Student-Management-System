@@ -85,8 +85,8 @@ st.set_page_config(page_title="SMS by Sajida Khoso", layout="wide")
 
 # Branding Header
 st.markdown("""
-<h1 style="text-align:center; color:#4CAF50;">📚 Student Management System</h1>
-<h4 style="text-align:center; color:#666;">Developed with ❤️ by <b style="color:#E91E63;">Sajida Khoso</b></h4>
+<h1 style="text-align:center; color:#4CAF50;">Student Management System</h1>
+<h4 style="text-align:center; color:#666;">Developed by <b style="color:#E91E63;">Sajida Khoso</b></h4>
 """, unsafe_allow_html=True)
 
 # Sidebar
@@ -198,5 +198,6 @@ st.markdown("""
 <a href='https://github.com/sajidakhoso' target='_blank'>🔗 GitHub Profile</a>
 </center>
 """, unsafe_allow_html=True)
+
 
 

@@ -3,11 +3,11 @@ import os
 import csv
 from typing import List, Dict
 
-# ---------- GLOBAL CONFIG ----------
+# GLOBAL CONFIG 
 DATA_FILE = "students.txt"
 FIELDNAMES = ["ID", "Name", "Age", "Grade", "Section"]
 
-# ---------- FILE FUNCTIONS ----------
+# FILE FUNCTIONS 
 def ensure_data_file():
     """Create the data file if it does not exist."""
     if not os.path.exists(DATA_FILE):
@@ -45,7 +45,7 @@ def validate_student(id, name, age, grade, section, existing_ids):
         return False, "❌ Section cannot be empty."
     return True, "OK"
 
-# ---------- CORE OPERATIONS ----------
+# CORE OPERATIONS 
 def add_student(id, name, age, grade, section):
     records = read_records()
     ids = [r["ID"] for r in records]
@@ -54,7 +54,7 @@ def add_student(id, name, age, grade, section):
         return False, msg
     records.append({"ID": id, "Name": name, "Age": age, "Grade": grade.upper(), "Section": section})
     write_records(records)
-    return True, "✅ Student added successfully!"
+    return True, "Student added successfully!"
 
 def search_student(id):
     return next((r for r in read_records() if r["ID"] == id), None)
@@ -69,16 +69,16 @@ def update_student(id, name, age, grade, section):
             break
     if updated:
         write_records(records)
-        return True, "✅ Record updated successfully!"
-    return False, "❌ Student ID not found."
+        return True, " Record updated successfully!"
+    return False, " Student ID not found."
 
 def delete_student(id):
     records = read_records()
     new_records = [r for r in records if r["ID"] != id]
     if len(new_records) == len(records):
-        return False, "❌ Student not found."
+        return False, " Student not found."
     write_records(new_records)
-    return True, "🗑️ Student deleted."
+    return True, " Student deleted."
 
 # ---------- UI ----------
 st.set_page_config(page_title="SMS by Sajida Khoso", layout="wide")
@@ -90,7 +90,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Sidebar
-st.sidebar.header("📌 Actions")
+st.sidebar.header(" Actions")
 choice = st.sidebar.selectbox(
     "Select",
     ["Home", "Add Student", "View All Students", "Search Student", "Update Student", "Delete Student", "About"]
@@ -105,13 +105,13 @@ st.sidebar.markdown("""
 </a>
 """, unsafe_allow_html=True)
 
-# ---------- PAGES ----------
+# PAGES 
 if choice == "Home":
-    st.header("🏠 Welcome to the Student Management System")
+    st.header("Welcome to the Student Management System")
     st.info("Use the left sidebar to manage student records.")
 
 elif choice == "Add Student":
-    st.header("➕ Add New Student")
+    st.header("Add New Student")
     id = st.text_input("Student ID")
     name = st.text_input("Full Name")
     age = st.text_input("Age")
@@ -125,7 +125,7 @@ elif choice == "Add Student":
             st.error(msg)
 
 elif choice == "View All Students":
-    st.header("📋 All Students")
+    st.header("All Students")
     data = read_records()
     if data:
         st.table(data)
@@ -133,7 +133,7 @@ elif choice == "View All Students":
         st.warning("No students found.")
 
 elif choice == "Search Student":
-    st.header("🔍 Search Student")
+    st.header("Search Student")
     id = st.text_input("Enter Student ID")
     if st.button("Search"):
         rec = search_student(id)
@@ -144,7 +144,7 @@ elif choice == "Search Student":
             st.error("Not found.")
 
 elif choice == "Update Student":
-    st.header("✏️ Update Student")
+    st.header("Update Student")
     id = st.text_input("Enter ID to update")
     if st.button("Load Record"):
         rec = search_student(id)
@@ -167,7 +167,7 @@ elif choice == "Update Student":
             st.session_state.pop("edit", None)
 
 elif choice == "Delete Student":
-    st.header("🗑️ Delete Student")
+    st.header("Delete Student")
     id = st.text_input("Enter Student ID")
     if st.button("Delete"):
         ok, msg = delete_student(id)
@@ -177,7 +177,7 @@ elif choice == "Delete Student":
             st.error(msg)
 
 elif choice == "About":
-    st.header("ℹ️ About This Project")
+    st.header("About This Project")
     st.write("""
     **Student Management System**  
     Created by **Sajida Khoso**  
@@ -198,3 +198,4 @@ st.markdown("""
 <a href='https://github.com/sajidakhoso' target='_blank'>🔗 GitHub Profile</a>
 </center>
 """, unsafe_allow_html=True)
+

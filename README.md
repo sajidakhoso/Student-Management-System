@@ -12,7 +12,7 @@ All student data is stored locally in a text file (`students.txt`) for quick acc
 ---
 
 ## 🎥 Video Demo  
-
+https://github.com/user-attachments/assets/bd6c4749-08ae-47db-b6c2-708ed14d84f7
 
 ---
 
